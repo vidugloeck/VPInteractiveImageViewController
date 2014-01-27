@@ -7,6 +7,7 @@
 //
 
 #import "VPInteractiveImageView.h"
+#import "VPInteractiveImageViewController.h"
 
 @implementation VPInteractiveImageView
 
@@ -23,7 +24,15 @@
 }
 
 - (void)imageViewTapped:(UITapGestureRecognizer *)recognizer {
-    //TODO: Present InteractiveViewController
+    VPInteractiveImageViewController *controller = [[VPInteractiveImageViewController alloc] init];
+    controller.image = self.image;
+    if (self.presentingViewController) {
+        [self.presentingViewController presentViewController:controller animated:YES completion:NULL];
+    } else {
+        [UIApplication.sharedApplication.delegate.window.rootViewController presentViewController:controller
+                                                                                         animated:YES
+                                                                                       completion:NULL];
+    }
 }
 
 @end
