@@ -44,7 +44,8 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     VPExampleCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:CellID
                                                                                 forIndexPath:indexPath];
-    cell.backgroundColor = UIColor.redColor;
+    NSString *imageName = [NSString stringWithFormat:@"%d",indexPath.row];
+    cell.image = [UIImage imageNamed:imageName];
     return cell;
 }
 
