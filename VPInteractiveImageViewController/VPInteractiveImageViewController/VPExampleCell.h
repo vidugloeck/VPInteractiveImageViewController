@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VPInteractiveImageView.h"
 
 @interface VPExampleCell : UICollectionViewCell
-@property (nonatomic) UIImage *image;
+@property (nonatomic) VPInteractiveImageView *imageView;
 @end

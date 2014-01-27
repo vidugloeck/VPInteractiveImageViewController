@@ -7,10 +7,9 @@
 //
 
 #import "VPExampleCell.h"
-#import "VPInteractiveImageView.h"
 
 @interface VPExampleCell ()
-@property (nonatomic) VPInteractiveImageView *imageView;
+
 @end
 
 @implementation VPExampleCell
@@ -28,16 +27,6 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     _imageView.frame = self.contentView.bounds;
-}
-
-#pragma mark - Getter / Setter
-
-- (UIImage *)image {
-    return self.imageView.image;
-}
-
-- (void)setImage:(UIImage *)image {
-    self.imageView.image = image;
 }
 
 @end
