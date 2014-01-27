@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		122B94B5189711D900D1D078 /* VPInteractiveImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 122B94B4189711D900D1D078 /* VPInteractiveImageView.m */; };
 		12375E6A1896FFD300279949 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12375E691896FFD300279949 /* Foundation.framework */; };
 		12375E6C1896FFD300279949 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12375E6B1896FFD300279949 /* CoreGraphics.framework */; };
 		12375E6E1896FFD300279949 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12375E6D1896FFD300279949 /* UIKit.framework */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		122B94B3189711D900D1D078 /* VPInteractiveImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPInteractiveImageView.h; sourceTree = "<group>"; };
+		122B94B4189711D900D1D078 /* VPInteractiveImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPInteractiveImageView.m; sourceTree = "<group>"; };
 		12375E661896FFD300279949 /* VPInteractiveImageViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VPInteractiveImageViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12375E691896FFD300279949 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		12375E6B1896FFD300279949 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -119,6 +122,8 @@
 				12375E991897012500279949 /* VPExampleViewController.m */,
 				12375E9B189705B300279949 /* VPExampleCell.h */,
 				12375E9C189705B300279949 /* VPExampleCell.m */,
+				122B94B3189711D900D1D078 /* VPInteractiveImageView.h */,
+				122B94B4189711D900D1D078 /* VPInteractiveImageView.m */,
 				12375E7B1896FFD300279949 /* Images.xcassets */,
 				12375E701896FFD300279949 /* Supporting Files */,
 			);
@@ -250,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				122B94B5189711D900D1D078 /* VPInteractiveImageView.m in Sources */,
 				12375E9D189705B300279949 /* VPExampleCell.m in Sources */,
 				12375E7A1896FFD300279949 /* VPAppDelegate.m in Sources */,
 				12375E9A1897012500279949 /* VPExampleViewController.m in Sources */,
@@ -458,6 +464,7 @@
 				12375E941896FFD400279949 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		12375E951896FFD400279949 /* Build configuration list for PBXNativeTarget "VPInteractiveImageViewControllerTests" */ = {
 			isa = XCConfigurationList;
@@ -466,6 +473,7 @@
 				12375E971896FFD400279949 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
