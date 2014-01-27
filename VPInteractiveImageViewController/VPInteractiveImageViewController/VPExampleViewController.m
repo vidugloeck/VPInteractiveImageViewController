@@ -45,7 +45,7 @@
     VPExampleCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:CellID
                                                                                 forIndexPath:indexPath];
     NSString *imageName = [NSString stringWithFormat:@"%d",indexPath.row];
-    cell.image = [UIImage imageNamed:imageName];
+    cell.imageView.image = [UIImage imageNamed:imageName];
     return cell;
 }
 
