@@ -17,13 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
-	self.imageView = [[UIImageView alloc] initWithImage:_image];
+	self.imageView = [[UIImageView alloc] initWithImage:self.image];
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:self.imageView];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
 }
 
 - (void)viewWillLayoutSubviews {
