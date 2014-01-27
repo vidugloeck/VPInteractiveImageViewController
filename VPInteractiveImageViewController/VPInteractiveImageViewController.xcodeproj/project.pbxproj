@@ -20,6 +20,7 @@
 		12375E8D1896FFD400279949 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12375E8B1896FFD300279949 /* InfoPlist.strings */; };
 		12375E8F1896FFD400279949 /* VPInteractiveImageViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12375E8E1896FFD400279949 /* VPInteractiveImageViewControllerTests.m */; };
 		12375E9A1897012500279949 /* VPExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12375E991897012500279949 /* VPExampleViewController.m */; };
+		12375E9D189705B300279949 /* VPExampleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12375E9C189705B300279949 /* VPExampleCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		12375E8E1896FFD400279949 /* VPInteractiveImageViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPInteractiveImageViewControllerTests.m; sourceTree = "<group>"; };
 		12375E981897012500279949 /* VPExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPExampleViewController.h; sourceTree = "<group>"; };
 		12375E991897012500279949 /* VPExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPExampleViewController.m; sourceTree = "<group>"; };
+		12375E9B189705B300279949 /* VPExampleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPExampleCell.h; sourceTree = "<group>"; };
+		12375E9C189705B300279949 /* VPExampleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPExampleCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,8 @@
 				12375E791896FFD300279949 /* VPAppDelegate.m */,
 				12375E981897012500279949 /* VPExampleViewController.h */,
 				12375E991897012500279949 /* VPExampleViewController.m */,
+				12375E9B189705B300279949 /* VPExampleCell.h */,
+				12375E9C189705B300279949 /* VPExampleCell.m */,
 				12375E7B1896FFD300279949 /* Images.xcassets */,
 				12375E701896FFD300279949 /* Supporting Files */,
 			);
@@ -245,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12375E9D189705B300279949 /* VPExampleCell.m in Sources */,
 				12375E7A1896FFD300279949 /* VPAppDelegate.m in Sources */,
 				12375E9A1897012500279949 /* VPExampleViewController.m in Sources */,
 				12375E761896FFD300279949 /* main.m in Sources */,

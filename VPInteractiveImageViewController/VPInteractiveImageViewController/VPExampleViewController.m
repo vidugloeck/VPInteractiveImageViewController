@@ -7,6 +7,7 @@
 //
 
 #import "VPExampleViewController.h"
+#import "VPExampleCell.h"
 
 #define CellID @"CellID"
 
@@ -29,7 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:CellID];
+    [self.collectionView registerClass:[VPExampleCell class] forCellWithReuseIdentifier:CellID];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -41,7 +42,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:CellID
+    VPExampleCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:CellID
                                                                                 forIndexPath:indexPath];
     cell.backgroundColor = UIColor.redColor;
     return cell;
