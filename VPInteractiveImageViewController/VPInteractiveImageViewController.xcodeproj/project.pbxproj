@@ -19,6 +19,7 @@
 		12375E851896FFD300279949 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12375E6D1896FFD300279949 /* UIKit.framework */; };
 		12375E8D1896FFD400279949 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12375E8B1896FFD300279949 /* InfoPlist.strings */; };
 		12375E8F1896FFD400279949 /* VPInteractiveImageViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12375E8E1896FFD400279949 /* VPInteractiveImageViewControllerTests.m */; };
+		12375E9A1897012500279949 /* VPExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12375E991897012500279949 /* VPExampleViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		12375E8A1896FFD300279949 /* VPInteractiveImageViewControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VPInteractiveImageViewControllerTests-Info.plist"; sourceTree = "<group>"; };
 		12375E8C1896FFD400279949 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		12375E8E1896FFD400279949 /* VPInteractiveImageViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPInteractiveImageViewControllerTests.m; sourceTree = "<group>"; };
+		12375E981897012500279949 /* VPExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPExampleViewController.h; sourceTree = "<group>"; };
+		12375E991897012500279949 /* VPExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPExampleViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 			children = (
 				12375E781896FFD300279949 /* VPAppDelegate.h */,
 				12375E791896FFD300279949 /* VPAppDelegate.m */,
+				12375E981897012500279949 /* VPExampleViewController.h */,
+				12375E991897012500279949 /* VPExampleViewController.m */,
 				12375E7B1896FFD300279949 /* Images.xcassets */,
 				12375E701896FFD300279949 /* Supporting Files */,
 			);
@@ -241,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12375E7A1896FFD300279949 /* VPAppDelegate.m in Sources */,
+				12375E9A1897012500279949 /* VPExampleViewController.m in Sources */,
 				12375E761896FFD300279949 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
