@@ -7,9 +7,10 @@
 //
 
 #import "VPExampleCell.h"
+#import "VPInteractiveImageView.h"
 
 @interface VPExampleCell ()
-@property (nonatomic) UIImageView *imageView;
+@property (nonatomic) VPInteractiveImageView *imageView;
 @end
 
 @implementation VPExampleCell
@@ -18,7 +19,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _imageView = [[VPInteractiveImageView alloc] initWithFrame:CGRectZero];
         [self.contentView addSubview:_imageView];
     }
     return self;
