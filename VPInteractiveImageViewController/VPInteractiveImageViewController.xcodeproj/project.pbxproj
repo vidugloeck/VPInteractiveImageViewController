@@ -23,6 +23,10 @@
 		12375E8F1896FFD400279949 /* VPInteractiveImageViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12375E8E1896FFD400279949 /* VPInteractiveImageViewControllerTests.m */; };
 		12375E9A1897012500279949 /* VPExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12375E991897012500279949 /* VPExampleViewController.m */; };
 		12375E9D189705B300279949 /* VPExampleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12375E9C189705B300279949 /* VPExampleCell.m */; };
+		12F947F2189D95F40082CC71 /* VPTransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F947F1189D95F40082CC71 /* VPTransitionDelegate.m */; };
+		12F947F3189D95F40082CC71 /* VPTransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F947F1189D95F40082CC71 /* VPTransitionDelegate.m */; };
+		12F947F6189D982B0082CC71 /* VPTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F947F5189D982B0082CC71 /* VPTransitionAnimator.m */; };
+		12F947F7189D982B0082CC71 /* VPTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F947F5189D982B0082CC71 /* VPTransitionAnimator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +64,10 @@
 		12375E991897012500279949 /* VPExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPExampleViewController.m; sourceTree = "<group>"; };
 		12375E9B189705B300279949 /* VPExampleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPExampleCell.h; sourceTree = "<group>"; };
 		12375E9C189705B300279949 /* VPExampleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPExampleCell.m; sourceTree = "<group>"; };
+		12F947F0189D95F40082CC71 /* VPTransitionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPTransitionDelegate.h; sourceTree = "<group>"; };
+		12F947F1189D95F40082CC71 /* VPTransitionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPTransitionDelegate.m; sourceTree = "<group>"; };
+		12F947F4189D982B0082CC71 /* VPTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPTransitionAnimator.h; sourceTree = "<group>"; };
+		12F947F5189D982B0082CC71 /* VPTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPTransitionAnimator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +137,10 @@
 				122B94B4189711D900D1D078 /* VPInteractiveImageView.m */,
 				122B94B6189717C700D1D078 /* VPInteractiveImageViewController.h */,
 				122B94B7189717C700D1D078 /* VPInteractiveImageViewController.m */,
+				12F947F0189D95F40082CC71 /* VPTransitionDelegate.h */,
+				12F947F1189D95F40082CC71 /* VPTransitionDelegate.m */,
+				12F947F4189D982B0082CC71 /* VPTransitionAnimator.h */,
+				12F947F5189D982B0082CC71 /* VPTransitionAnimator.m */,
 				12375E7B1896FFD300279949 /* Images.xcassets */,
 				12375E701896FFD300279949 /* Supporting Files */,
 			);
@@ -262,8 +274,10 @@
 			files = (
 				122B94B5189711D900D1D078 /* VPInteractiveImageView.m in Sources */,
 				12375E9D189705B300279949 /* VPExampleCell.m in Sources */,
+				12F947F2189D95F40082CC71 /* VPTransitionDelegate.m in Sources */,
 				12375E7A1896FFD300279949 /* VPAppDelegate.m in Sources */,
 				12375E9A1897012500279949 /* VPExampleViewController.m in Sources */,
+				12F947F6189D982B0082CC71 /* VPTransitionAnimator.m in Sources */,
 				12375E761896FFD300279949 /* main.m in Sources */,
 				122B94B8189717C700D1D078 /* VPInteractiveImageViewController.m in Sources */,
 			);
@@ -274,6 +288,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				12375E8F1896FFD400279949 /* VPInteractiveImageViewControllerTests.m in Sources */,
+				12F947F7189D982B0082CC71 /* VPTransitionAnimator.m in Sources */,
+				12F947F3189D95F40082CC71 /* VPTransitionDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
