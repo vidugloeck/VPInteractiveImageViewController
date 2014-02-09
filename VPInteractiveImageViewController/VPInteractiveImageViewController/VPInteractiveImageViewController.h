@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface VPInteractiveImageViewController : UIViewController
-@property (nonatomic) UIImage *image;
+@property (nonatomic, readonly) UIImageView *imageView;
 @end

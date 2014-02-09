@@ -14,10 +14,17 @@
 
 @implementation VPInteractiveImageViewController
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
-	self.imageView = [[UIImageView alloc] initWithImage:self.image];
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:self.imageView];
 }
@@ -25,13 +32,6 @@
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     self.imageView.frame = self.view.bounds;
-}
-
-#pragma mark - Getter / Setter
-
-- (void)setImage:(UIImage *)image {
-    _image = image;
-    self.imageView.image = image;
 }
 
 @end
