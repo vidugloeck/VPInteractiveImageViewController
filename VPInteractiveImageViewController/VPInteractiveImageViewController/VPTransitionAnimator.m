@@ -55,7 +55,7 @@
 
     CGRect endFrame = [transitionContext initialFrameForViewController:fromViewController];
 
-    CGRect bla = self.imageView.frame;
+    CGRect finalImageViewRect = self.imageView.frame;
     self.imageView.frame = [containerView convertRect:self.interactiveImageView.frame
                                                     fromView:self.interactiveImageView.superview];
     toViewController.view.frame = endFrame;
@@ -64,7 +64,7 @@
 
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                      animations:^{
-                         self.imageView.frame = bla;
+                         self.imageView.frame = finalImageViewRect;
                      } completion:^(BOOL finished) {
                          [transitionContext completeTransition:YES];
                      }];
