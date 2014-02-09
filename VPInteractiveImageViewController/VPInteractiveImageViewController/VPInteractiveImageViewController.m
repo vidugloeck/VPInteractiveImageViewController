@@ -18,6 +18,8 @@
     self = [super init];
     if (self) {
         _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+        [self.view addGestureRecognizer:recognizer];
     }
     return self;
 }
@@ -32,6 +34,10 @@
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     self.imageView.frame = self.view.bounds;
+}
+
+- (void)viewTapped:(UITapGestureRecognizer *)gestureRecognizer {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end
