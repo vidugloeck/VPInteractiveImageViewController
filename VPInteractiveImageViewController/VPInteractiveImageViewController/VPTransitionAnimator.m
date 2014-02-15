@@ -12,6 +12,7 @@
 @interface VPTransitionAnimator ()
 @property (nonatomic) VPInteractiveImageView *interactiveImageView;
 @property (nonatomic) UIImageView *imageView;
+@property (nonatomic) CGRect originFrame;
 @end
 
 @implementation VPTransitionAnimator
@@ -55,17 +56,28 @@
 
     CGRect endFrame = [transitionContext initialFrameForViewController:fromViewController];
 
+    UIView *view = [[UIView alloc] initWithFrame:endFrame];
+    view.backgroundColor = toViewController.view.backgroundColor;
+    view.alpha = 0;
+    [containerView addSubview:view];
+
+    UIColor *backgroundColor = toViewController.view.backgroundColor;
+
+    self.originFrame = [containerView convertRect:self.interactiveImageView.frame
+                                         fromView:self.interactiveImageView.superview];
     CGRect finalImageViewRect = self.imageView.frame;
-    self.imageView.frame = [containerView convertRect:self.interactiveImageView.frame
-                                                    fromView:self.interactiveImageView.superview];
+    self.imageView.frame = self.originFrame;
     toViewController.view.frame = endFrame;
+    toViewController.view.backgroundColor = [UIColor clearColor];
 
     [containerView addSubview:toViewController.view];
 
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                      animations:^{
                          self.imageView.frame = finalImageViewRect;
+                         view.alpha = 1;
                      } completion:^(BOOL finished) {
+                         toViewController.view.backgroundColor = backgroundColor;
                          [transitionContext completeTransition:YES];
                      }];
 }
@@ -80,6 +92,12 @@
     CGRect endFrame = [transitionContext initialFrameForViewController:fromViewController];
 
     [containerView addSubview:toViewController.view];
+
+    UIView *view = [[UIView alloc] initWithFrame:containerView.bounds];
+    view.backgroundColor = fromViewController.view.backgroundColor;
+    [containerView addSubview:view];
+
+    fromViewController.view.backgroundColor = [UIColor clearColor];
     [containerView addSubview:fromViewController.view];
 
     fromViewController.view.frame = endFrame;
@@ -87,7 +105,9 @@
 
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                      animations:^{
-                         fromViewController.view.frame = CGRectZero;
+                         fromViewController.view.frame = self.originFrame;
+                         self.imageView.frame = [fromViewController.view convertRect:self.originFrame fromView:containerView];
+                         view.alpha = 0;
                      } completion:^(BOOL finished) {
                          [transitionContext completeTransition:YES];
                      }];

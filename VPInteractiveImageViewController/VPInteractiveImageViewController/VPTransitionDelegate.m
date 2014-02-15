@@ -13,6 +13,7 @@
 @interface VPTransitionDelegate ()
 @property (nonatomic, weak) VPInteractiveImageView *interactiveImageView;
 @property (nonatomic, weak) UIImageView *imageView;
+@property (nonatomic) VPTransitionAnimator *transitionAnimator;
 @end
 
 @implementation VPTransitionDelegate
@@ -27,17 +28,25 @@
     return self;
 }
 
+- (VPTransitionAnimator *)transitionAnimator {
+    if (!_transitionAnimator) {
+        _transitionAnimator = [[VPTransitionAnimator alloc] initWithInteractiveImageView:self.interactiveImageView
+                                                                 fullScreenImageViewView:self.imageView];
+    }
+    return _transitionAnimator;
+}
+
 #pragma mark - UIViewControllerAnimatedTransitioning
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
                                                                   presentingController:(UIViewController *)presenting
                                                                       sourceController:(UIViewController *)source {
-    return [[VPTransitionAnimator alloc] initWithInteractiveImageView:self.interactiveImageView
-                                              fullScreenImageViewView:self.imageView];
+    return self.transitionAnimator;
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    return [[VPTransitionAnimator alloc] initWithInteractiveImageView:self.interactiveImageView
-                                              fullScreenImageViewView:self.imageView];
+    VPTransitionAnimator *transitionAnimator =  self.transitionAnimator;
+    self.transitionAnimator = nil;
+    return transitionAnimator;
 }
 @end
