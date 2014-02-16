@@ -9,24 +9,62 @@
 #import "VPTransitionDelegate.h"
 #import "VPTransitionAnimator.h"
 #import "VPInteractiveImageView.h"
+#import "VPTransitionInteractor.h"
+#import "VPInteractiveImageViewController.h"
 
 @interface VPTransitionDelegate ()
 @property (nonatomic, weak) VPInteractiveImageView *interactiveImageView;
 @property (nonatomic, weak) UIImageView *imageView;
 @property (nonatomic) VPTransitionAnimator *transitionAnimator;
+@property (nonatomic) VPTransitionInteractor *presentingTransitionInteractor;
+@property (nonatomic) VPTransitionInteractor *dismissingTransitionInteractor;
 @end
 
 @implementation VPTransitionDelegate
 
 - (id)initWithInteractiveImageView:(VPInteractiveImageView *)interactiveImageView
-               fullScreenImageView:(UIImageView *)imageView;{
+               fullScreenImageView:(UIImageView *)imageView {
     self = [super init];
     if (self) {
         _interactiveImageView = interactiveImageView;
         _imageView = imageView;
+        _presentingTransitionInteractor = [[VPTransitionInteractor alloc] initWithViewController:nil
+                                                                                   pinchableView:_interactiveImageView];
     }
     return self;
 }
+
+#pragma mark - UIViewControllerAnimatedTransitioning
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                  presentingController:(UIViewController *)presenting
+                                                                      sourceController:(UIViewController *)source {
+    self.transitionAnimator = nil;
+    self.dismissingTransitionInteractor = [[VPTransitionInteractor alloc] initWithViewController:presented
+                                                                                   pinchableView:self.imageView];
+    return self.transitionAnimator;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    VPTransitionAnimator *transitionAnimator =  self.transitionAnimator;
+    return transitionAnimator;
+}
+
+#pragma mark - UIViewControllerInteractiveTransitioning
+
+- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id <UIViewControllerAnimatedTransitioning>)animator {
+    if (!self.presentingTransitionInteractor.isInteractiveTransition)
+        return nil;
+    return self.presentingTransitionInteractor;
+}
+
+- (id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator {
+    if (!self.dismissingTransitionInteractor.isInteractiveTransition)
+        return nil;
+    return self.dismissingTransitionInteractor;
+}
+
+#pragma mark - Helper methods
 
 - (VPTransitionAnimator *)transitionAnimator {
     if (!_transitionAnimator) {
@@ -36,17 +74,4 @@
     return _transitionAnimator;
 }
 
-#pragma mark - UIViewControllerAnimatedTransitioning
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
-                                                                  presentingController:(UIViewController *)presenting
-                                                                      sourceController:(UIViewController *)source {
-    return self.transitionAnimator;
-}
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    VPTransitionAnimator *transitionAnimator =  self.transitionAnimator;
-    self.transitionAnimator = nil;
-    return transitionAnimator;
-}
 @end

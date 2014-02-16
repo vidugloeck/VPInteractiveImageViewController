@@ -10,6 +10,5 @@
 
 @class VPInteractiveImageView;
 @interface VPTransitionDelegate : NSObject <UIViewControllerTransitioningDelegate>
-- (id)initWithInteractiveImageView:(VPInteractiveImageView *)interactiveImageView
-               fullScreenImageView:(UIImageView *)imageView;
+- (id)initWithInteractiveImageView:(VPInteractiveImageView *)interactiveImageView fullScreenImageView:(UIImageView *)imageView;
 @end
