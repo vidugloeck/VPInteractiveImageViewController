@@ -77,9 +77,9 @@
                          self.imageView.frame = finalImageViewRect;
                          view.alpha = 1;
                      } completion:^(BOOL finished) {
-                         toViewController.view.backgroundColor = backgroundColor;
-                         [transitionContext completeTransition:YES];
-                     }];
+        toViewController.view.backgroundColor = backgroundColor;
+        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+    }];
 }
 
 - (void)dismissWithTransitionContext:(id<UIViewControllerContextTransitioning>)transitionContext {
@@ -109,7 +109,8 @@
                          self.imageView.frame = [fromViewController.view convertRect:self.originFrame fromView:containerView];
                          view.alpha = 0;
                      } completion:^(BOOL finished) {
-                         [transitionContext completeTransition:YES];
-                     }];
+                         fromViewController.view.backgroundColor = backgroundColor;
+        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+    }];
 }
 @end
