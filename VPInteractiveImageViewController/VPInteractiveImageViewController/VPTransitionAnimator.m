@@ -97,7 +97,12 @@
     view.backgroundColor = fromViewController.view.backgroundColor;
     [containerView addSubview:view];
 
+    UIColor *backgroundColor = fromViewController.view.backgroundColor;
+
     fromViewController.view.backgroundColor = [UIColor clearColor];
+    //This is unforutately needed, because the windows backgroundColor
+    //is visible very shortly when the transition is canceled;
+    fromViewController.view.window.backgroundColor = backgroundColor;
     [containerView addSubview:fromViewController.view];
 
     fromViewController.view.frame = endFrame;
