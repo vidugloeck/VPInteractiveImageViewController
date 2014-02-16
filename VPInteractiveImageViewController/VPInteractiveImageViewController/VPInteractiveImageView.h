@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface VPInteractiveImageView : UIImageView
+
 @property (nonatomic) UIViewController *presentingViewController;
+
+- (void)presentFullscreen;
 @end
