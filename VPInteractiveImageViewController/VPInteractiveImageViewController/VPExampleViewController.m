@@ -31,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.collectionView registerClass:[VPExampleCell class] forCellWithReuseIdentifier:CellID];
+    self.collectionView.alwaysBounceVertical = YES;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
