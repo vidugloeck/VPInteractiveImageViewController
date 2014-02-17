@@ -155,7 +155,6 @@
             CGFloat percent = ((1.0f/200) * translationY);
             percent = (percent > 100) ? 100 : percent;
             percent = (percent < 0) ? 0 : percent;
-            NSLog(@"%f percent for translation: %f",percent,translationY);
             [self updateInteractiveTransition:percent];
             break;
         }
