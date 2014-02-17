@@ -10,9 +10,11 @@
 #import "VPInteractiveImageView.h"
 
 @interface VPTransitionInteractor () <UIGestureRecognizerDelegate>
+
 @property (nonatomic) UIViewController *viewController;
 @property (nonatomic) UIView *pinchableView;
 @property (nonatomic) CGFloat fixedScale;
+@property (nonatomic) BOOL zoom;
 
 @end
 
@@ -35,6 +37,7 @@
     if (self.viewController) {
         gestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self
                                                                       action:@selector(handlePinchClose:)];
+        gestureRecognizer.delegate = self;
     } else {
         gestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self
                                                                       action:@selector(handlePinchOpen:)];
@@ -89,6 +92,16 @@
     CGFloat scale = pinch.scale;
     switch (pinch.state) {
         case UIGestureRecognizerStateBegan: {
+            //TODO: Need to introduce a proper interface to get the scrollView
+            UIScrollView *scrollView = (UIScrollView *)self.pinchableView.superview;
+            if (scale >= 1 || scrollView.zoomScale > scrollView.minimumZoomScale) {
+                pinch.enabled = NO;
+                pinch.enabled = YES;
+                return;
+            } else {
+                scrollView.pinchGestureRecognizer.enabled = NO;
+                scrollView.pinchGestureRecognizer.enabled = YES;
+            }
             self.fixedScale = scale;
             self.isInteractiveTransition = YES;
             [self.viewController dismissViewControllerAnimated:YES
@@ -125,11 +138,19 @@
 - (void)handlePanClose:(UIPanGestureRecognizer *)gestureRecognizer {
     CGFloat translationY = [gestureRecognizer translationInView:self.pinchableView].y;
     switch (gestureRecognizer.state) {
-        case UIGestureRecognizerStateBegan:
+        case UIGestureRecognizerStateBegan:{
+            //TODO: Need to introduce a proper interface to get the scrollView
+            UIScrollView *scrollView = (UIScrollView *)self.pinchableView.superview;
+            if (scrollView.zoomScale > scrollView.minimumZoomScale) {
+                gestureRecognizer.enabled = NO;
+                gestureRecognizer.enabled = YES;
+                return;
+            }
             self.isInteractiveTransition = YES;
             [self.viewController dismissViewControllerAnimated:YES
                                                     completion:NULL];
             break;
+        }
         case UIGestureRecognizerStateChanged: {
             CGFloat percent = ((1.0f/200) * translationY);
             percent = (percent > 100) ? 100 : percent;
@@ -157,6 +178,10 @@
         case UIGestureRecognizerStatePossible:
             break;
     }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
 }
 
 @end
