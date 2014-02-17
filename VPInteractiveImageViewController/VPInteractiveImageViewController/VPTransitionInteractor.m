@@ -14,7 +14,6 @@
 @property (nonatomic) UIViewController *viewController;
 @property (nonatomic) UIView *pinchableView;
 @property (nonatomic) CGFloat fixedScale;
-@property (nonatomic) BOOL zoom;
 
 @end
 
