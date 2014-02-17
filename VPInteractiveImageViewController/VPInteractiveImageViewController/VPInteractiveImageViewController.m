@@ -21,7 +21,11 @@
     if (self) {
         _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
+        UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewDoubleTapped:)];
+        doubleTapRecognizer.numberOfTapsRequired = 2;
+        [self.view addGestureRecognizer:doubleTapRecognizer];
         _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+        [_tapRecognizer requireGestureRecognizerToFail:doubleTapRecognizer];
         [self.view addGestureRecognizer:_tapRecognizer];
     }
     return self;
@@ -52,6 +56,14 @@
 
 - (void)viewTapped:(UITapGestureRecognizer *)gestureRecognizer {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)viewDoubleTapped:(UITapGestureRecognizer *)gestureRecognizer {
+    if (self.scrollView.zoomScale < self.scrollView.maximumZoomScale) {
+        [self.scrollView setZoomScale:self.scrollView.maximumZoomScale animated:YES];
+    } else {
+        [self.scrollView setZoomScale:self.scrollView.minimumZoomScale animated:YES];
+    }
 }
 
 #pragma mark - UIScrollViewDelegate

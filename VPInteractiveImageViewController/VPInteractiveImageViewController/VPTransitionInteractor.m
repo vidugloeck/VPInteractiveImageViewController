@@ -25,7 +25,6 @@
         _viewController = viewController;
         _pinchableView = pinchableView;
         _pinchableView.userInteractionEnabled = YES;
-
         [self setupGestureRecognizer];
     }
     return self;
