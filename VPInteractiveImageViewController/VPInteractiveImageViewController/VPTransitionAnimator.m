@@ -30,7 +30,7 @@
 #pragma mark - UIViewControllerAnimatedTransitioning
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
-    return 0.33;
+    return 1.33;
 }
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
@@ -67,6 +67,7 @@
                                          fromView:self.interactiveImageView.superview];
     CGRect finalImageViewRect = self.imageView.frame;
     self.imageView.frame = self.originFrame;
+    self.imageView.transform = [self affineTransformForInterfaceOrientation:toViewController.interfaceOrientation];
     toViewController.view.frame = endFrame;
     toViewController.view.backgroundColor = [UIColor clearColor];
 
@@ -75,6 +76,7 @@
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                      animations:^{
                          self.imageView.frame = finalImageViewRect;
+                         self.imageView.transform = CGAffineTransformIdentity;
                          view.alpha = 1;
                      } completion:^(BOOL finished) {
         toViewController.view.backgroundColor = backgroundColor;
@@ -108,14 +110,36 @@
     fromViewController.view.frame = endFrame;
     toViewController.view.frame = endFrame;
 
+
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                      animations:^{
                          fromViewController.view.frame = self.originFrame;
+                         self.imageView.transform = [self affineTransformForInterfaceOrientation:fromViewController.interfaceOrientation];
                          self.imageView.frame = [fromViewController.view convertRect:self.originFrame fromView:containerView];
                          view.alpha = 0;
                      } completion:^(BOOL finished) {
                          fromViewController.view.backgroundColor = backgroundColor;
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
     }];
+}
+
+
+- (CGAffineTransform)affineTransformForInterfaceOrientation:(UIInterfaceOrientation)orientation {
+    CGFloat angle;
+    switch (orientation) {
+        case UIInterfaceOrientationPortrait:
+            angle = 0;
+            break;
+        case UIInterfaceOrientationPortraitUpsideDown:
+            angle = M_PI;
+            break;
+        case UIInterfaceOrientationLandscapeLeft:
+            angle = M_PI_2;
+            break;
+        case UIInterfaceOrientationLandscapeRight:
+            angle = -M_PI_2;
+            break;
+    }
+    return CGAffineTransformMakeRotation(angle);
 }
 @end
