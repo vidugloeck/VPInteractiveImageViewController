@@ -32,7 +32,7 @@
 
 - (void)setupGestureRecognizer {
     UIPinchGestureRecognizer *gestureRecognizer;
-    if (!self.viewController) {
+    if (self.viewController) {
         gestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self
                                                                       action:@selector(handlePinchClose:)];
     } else {
