@@ -53,12 +53,12 @@
             break;
         }
         case UIGestureRecognizerStateChanged: {
-            CGFloat percent = (1.0 - scale/_startScale);
+            CGFloat percent = (1.0f / _startScale) * scale;
             [self updateInteractiveTransition:(percent < 0.0) ? 0.0 : percent];
             break;
         }
         case UIGestureRecognizerStateEnded: {
-            CGFloat percent = (1.0 - scale/_startScale);
+            CGFloat percent = (1.0f / _startScale) * scale;
             BOOL cancelled = ([pinch velocity] < 5.0 && percent <= 0.3);
 
             if (cancelled) {
