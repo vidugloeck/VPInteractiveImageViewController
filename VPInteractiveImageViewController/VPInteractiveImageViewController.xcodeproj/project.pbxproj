@@ -14,16 +14,16 @@
 		12375E6E1896FFD300279949 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12375E6D1896FFD300279949 /* UIKit.framework */; };
 		12375E741896FFD300279949 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12375E721896FFD300279949 /* InfoPlist.strings */; };
 		12375E761896FFD300279949 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 12375E751896FFD300279949 /* main.m */; };
-		12375E7A1896FFD300279949 /* VPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12375E791896FFD300279949 /* VPAppDelegate.m */; };
 		12375E7C1896FFD300279949 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12375E7B1896FFD300279949 /* Images.xcassets */; };
 		12375E831896FFD300279949 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12375E821896FFD300279949 /* XCTest.framework */; };
 		12375E841896FFD300279949 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12375E691896FFD300279949 /* Foundation.framework */; };
 		12375E851896FFD300279949 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12375E6D1896FFD300279949 /* UIKit.framework */; };
 		12375E8D1896FFD400279949 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12375E8B1896FFD300279949 /* InfoPlist.strings */; };
 		12375E8F1896FFD400279949 /* VPInteractiveImageViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12375E8E1896FFD400279949 /* VPInteractiveImageViewControllerTests.m */; };
-		12375E9A1897012500279949 /* VPExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12375E991897012500279949 /* VPExampleViewController.m */; };
-		12375E9D189705B300279949 /* VPExampleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12375E9C189705B300279949 /* VPExampleCell.m */; };
 		12F4B8B318B1192A005CD20D /* VPTransitionInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F4B8B218B1192A005CD20D /* VPTransitionInteractor.m */; };
+		12F4B8BB18B24EF9005CD20D /* VPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F4B8B618B24EF9005CD20D /* VPAppDelegate.m */; };
+		12F4B8BC18B24EF9005CD20D /* VPExampleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F4B8B818B24EF9005CD20D /* VPExampleCell.m */; };
+		12F4B8BD18B24EF9005CD20D /* VPExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F4B8BA18B24EF9005CD20D /* VPExampleViewController.m */; };
 		12F947F2189D95F40082CC71 /* VPTransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F947F1189D95F40082CC71 /* VPTransitionDelegate.m */; };
 		12F947F3189D95F40082CC71 /* VPTransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F947F1189D95F40082CC71 /* VPTransitionDelegate.m */; };
 		12F947F6189D982B0082CC71 /* VPTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F947F5189D982B0082CC71 /* VPTransitionAnimator.m */; };
@@ -53,20 +53,20 @@
 		12375E731896FFD300279949 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		12375E751896FFD300279949 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		12375E771896FFD300279949 /* VPInteractiveImageViewController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VPInteractiveImageViewController-Prefix.pch"; sourceTree = "<group>"; };
-		12375E781896FFD300279949 /* VPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPAppDelegate.h; sourceTree = "<group>"; };
-		12375E791896FFD300279949 /* VPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPAppDelegate.m; sourceTree = "<group>"; };
 		12375E7B1896FFD300279949 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		12375E811896FFD300279949 /* VPInteractiveImageViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VPInteractiveImageViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12375E821896FFD300279949 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		12375E8A1896FFD300279949 /* VPInteractiveImageViewControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VPInteractiveImageViewControllerTests-Info.plist"; sourceTree = "<group>"; };
 		12375E8C1896FFD400279949 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		12375E8E1896FFD400279949 /* VPInteractiveImageViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPInteractiveImageViewControllerTests.m; sourceTree = "<group>"; };
-		12375E981897012500279949 /* VPExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPExampleViewController.h; sourceTree = "<group>"; };
-		12375E991897012500279949 /* VPExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPExampleViewController.m; sourceTree = "<group>"; };
-		12375E9B189705B300279949 /* VPExampleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPExampleCell.h; sourceTree = "<group>"; };
-		12375E9C189705B300279949 /* VPExampleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPExampleCell.m; sourceTree = "<group>"; };
 		12F4B8B118B1192A005CD20D /* VPTransitionInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPTransitionInteractor.h; sourceTree = "<group>"; };
 		12F4B8B218B1192A005CD20D /* VPTransitionInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPTransitionInteractor.m; sourceTree = "<group>"; };
+		12F4B8B518B24EF9005CD20D /* VPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VPAppDelegate.h; path = Example/VPAppDelegate.h; sourceTree = "<group>"; };
+		12F4B8B618B24EF9005CD20D /* VPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VPAppDelegate.m; path = Example/VPAppDelegate.m; sourceTree = "<group>"; };
+		12F4B8B718B24EF9005CD20D /* VPExampleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VPExampleCell.h; path = Example/VPExampleCell.h; sourceTree = "<group>"; };
+		12F4B8B818B24EF9005CD20D /* VPExampleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VPExampleCell.m; path = Example/VPExampleCell.m; sourceTree = "<group>"; };
+		12F4B8B918B24EF9005CD20D /* VPExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VPExampleViewController.h; path = Example/VPExampleViewController.h; sourceTree = "<group>"; };
+		12F4B8BA18B24EF9005CD20D /* VPExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VPExampleViewController.m; path = Example/VPExampleViewController.m; sourceTree = "<group>"; };
 		12F947F0189D95F40082CC71 /* VPTransitionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPTransitionDelegate.h; sourceTree = "<group>"; };
 		12F947F1189D95F40082CC71 /* VPTransitionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPTransitionDelegate.m; sourceTree = "<group>"; };
 		12F947F4189D982B0082CC71 /* VPTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPTransitionAnimator.h; sourceTree = "<group>"; };
@@ -130,22 +130,10 @@
 		12375E6F1896FFD300279949 /* VPInteractiveImageViewController */ = {
 			isa = PBXGroup;
 			children = (
-				12375E781896FFD300279949 /* VPAppDelegate.h */,
-				12375E791896FFD300279949 /* VPAppDelegate.m */,
-				12375E981897012500279949 /* VPExampleViewController.h */,
-				12375E991897012500279949 /* VPExampleViewController.m */,
-				12375E9B189705B300279949 /* VPExampleCell.h */,
-				12375E9C189705B300279949 /* VPExampleCell.m */,
 				122B94B3189711D900D1D078 /* VPInteractiveImageView.h */,
 				122B94B4189711D900D1D078 /* VPInteractiveImageView.m */,
-				122B94B6189717C700D1D078 /* VPInteractiveImageViewController.h */,
-				122B94B7189717C700D1D078 /* VPInteractiveImageViewController.m */,
-				12F947F0189D95F40082CC71 /* VPTransitionDelegate.h */,
-				12F947F1189D95F40082CC71 /* VPTransitionDelegate.m */,
-				12F947F4189D982B0082CC71 /* VPTransitionAnimator.h */,
-				12F947F5189D982B0082CC71 /* VPTransitionAnimator.m */,
-				12F4B8B118B1192A005CD20D /* VPTransitionInteractor.h */,
-				12F4B8B218B1192A005CD20D /* VPTransitionInteractor.m */,
+				12F4B8B418B24DEC005CD20D /* Supporting Files */,
+				12F4B8BE18B24F11005CD20D /* Example */,
 				12375E7B1896FFD300279949 /* Images.xcassets */,
 				12375E701896FFD300279949 /* Supporting Files */,
 			);
@@ -179,6 +167,34 @@
 				12375E8B1896FFD300279949 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		12F4B8B418B24DEC005CD20D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				122B94B6189717C700D1D078 /* VPInteractiveImageViewController.h */,
+				122B94B7189717C700D1D078 /* VPInteractiveImageViewController.m */,
+				12F947F0189D95F40082CC71 /* VPTransitionDelegate.h */,
+				12F947F1189D95F40082CC71 /* VPTransitionDelegate.m */,
+				12F947F4189D982B0082CC71 /* VPTransitionAnimator.h */,
+				12F947F5189D982B0082CC71 /* VPTransitionAnimator.m */,
+				12F4B8B118B1192A005CD20D /* VPTransitionInteractor.h */,
+				12F4B8B218B1192A005CD20D /* VPTransitionInteractor.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		12F4B8BE18B24F11005CD20D /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				12F4B8B518B24EF9005CD20D /* VPAppDelegate.h */,
+				12F4B8B618B24EF9005CD20D /* VPAppDelegate.m */,
+				12F4B8B718B24EF9005CD20D /* VPExampleCell.h */,
+				12F4B8B818B24EF9005CD20D /* VPExampleCell.m */,
+				12F4B8B918B24EF9005CD20D /* VPExampleViewController.h */,
+				12F4B8BA18B24EF9005CD20D /* VPExampleViewController.m */,
+			);
+			name = Example;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,11 +294,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				122B94B5189711D900D1D078 /* VPInteractiveImageView.m in Sources */,
-				12375E9D189705B300279949 /* VPExampleCell.m in Sources */,
 				12F947F2189D95F40082CC71 /* VPTransitionDelegate.m in Sources */,
-				12375E7A1896FFD300279949 /* VPAppDelegate.m in Sources */,
+				12F4B8BB18B24EF9005CD20D /* VPAppDelegate.m in Sources */,
 				12F4B8B318B1192A005CD20D /* VPTransitionInteractor.m in Sources */,
-				12375E9A1897012500279949 /* VPExampleViewController.m in Sources */,
+				12F4B8BD18B24EF9005CD20D /* VPExampleViewController.m in Sources */,
+				12F4B8BC18B24EF9005CD20D /* VPExampleCell.m in Sources */,
 				12F947F6189D982B0082CC71 /* VPTransitionAnimator.m in Sources */,
 				12375E761896FFD300279949 /* main.m in Sources */,
 				122B94B8189717C700D1D078 /* VPInteractiveImageViewController.m in Sources */,
