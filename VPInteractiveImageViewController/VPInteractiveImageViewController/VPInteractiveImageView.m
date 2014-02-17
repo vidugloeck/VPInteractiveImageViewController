@@ -24,6 +24,7 @@
         UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                      action:@selector(imageViewTapped:)];
         [self addGestureRecognizer:recognizer];
+        _transitionDelegate = [[VPTransitionDelegate alloc] initWithInteractiveImageView:self fullScreenImageView:nil];
     }
     return self;
 }
@@ -35,7 +36,7 @@
 - (void)presentFullscreen {
     VPInteractiveImageViewController *controller = [[VPInteractiveImageViewController alloc] init];
     controller.imageView.image = self.image;
-    self.transitionDelegate = [[VPTransitionDelegate alloc] initWithInteractiveImageView:self fullScreenImageView:controller.imageView];
+    self.transitionDelegate.imageView = controller.imageView;
     controller.transitioningDelegate = self.transitionDelegate;
     if (self.presentingViewController) {
         [self.presentingViewController presentViewController:controller
