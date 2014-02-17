@@ -12,7 +12,7 @@
 @interface VPTransitionInteractor () <UIGestureRecognizerDelegate>
 @property (nonatomic) UIViewController *viewController;
 @property (nonatomic) UIView *pinchableView;
-@property (nonatomic) CGFloat startScale;
+@property (nonatomic) CGFloat fixedScale;
 
 @end
 
@@ -47,18 +47,18 @@
     CGFloat scale = pinch.scale;
     switch (pinch.state) {
         case UIGestureRecognizerStateBegan: {
-            self.startScale = 5;
+            self.fixedScale = 5;
             self.isInteractiveTransition = YES;
             [(VPInteractiveImageView *)self.pinchableView presentFullscreen];
             break;
         }
         case UIGestureRecognizerStateChanged: {
-            CGFloat percent = (1.0f / _startScale) * scale;
+            CGFloat percent = (1.0f / _fixedScale) * scale;
             [self updateInteractiveTransition:(percent < 0.0) ? 0.0 : percent];
             break;
         }
         case UIGestureRecognizerStateEnded: {
-            CGFloat percent = (1.0f / _startScale) * scale;
+            CGFloat percent = (1.0f / _fixedScale) * scale;
             BOOL cancelled = ([pinch velocity] < 5.0 && percent <= 0.3);
 
             if (cancelled) {
@@ -83,19 +83,19 @@
     CGFloat scale = pinch.scale;
     switch (pinch.state) {
         case UIGestureRecognizerStateBegan: {
-            self.startScale = scale;
+            self.fixedScale = scale;
             self.isInteractiveTransition = YES;
             [self.viewController dismissViewControllerAnimated:YES
                                                     completion:NULL];
             break;
         }
         case UIGestureRecognizerStateChanged: {
-            CGFloat percent = (1.0 - scale/_startScale);
+            CGFloat percent = (1.0 - scale/_fixedScale);
             [self updateInteractiveTransition:(percent < 0.0) ? 0.0 : percent];
             break;
         }
         case UIGestureRecognizerStateEnded: {
-            CGFloat percent = (1.0 - scale/_startScale);
+            CGFloat percent = (1.0 - scale/_fixedScale);
             BOOL cancelled = ([pinch velocity] < 5.0 && percent <= 0.3);
 
             if (cancelled) {
