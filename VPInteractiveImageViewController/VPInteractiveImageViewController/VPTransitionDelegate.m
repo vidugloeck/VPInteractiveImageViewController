@@ -14,7 +14,6 @@
 
 @interface VPTransitionDelegate ()
 @property (nonatomic, weak) VPInteractiveImageView *interactiveImageView;
-@property (nonatomic, weak) UIImageView *imageView;
 @property (nonatomic) VPTransitionAnimator *transitionAnimator;
 @property (nonatomic) VPTransitionInteractor *presentingTransitionInteractor;
 @property (nonatomic) VPTransitionInteractor *dismissingTransitionInteractor;

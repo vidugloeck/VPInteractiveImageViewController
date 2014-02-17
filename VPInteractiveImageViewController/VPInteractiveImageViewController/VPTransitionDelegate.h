@@ -10,5 +10,6 @@
 
 @class VPInteractiveImageView;
 @interface VPTransitionDelegate : NSObject <UIViewControllerTransitioningDelegate>
+@property (nonatomic, weak) UIImageView *imageView;
 - (id)initWithInteractiveImageView:(VPInteractiveImageView *)interactiveImageView fullScreenImageView:(UIImageView *)imageView;
 @end
