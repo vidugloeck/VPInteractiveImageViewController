@@ -14,6 +14,7 @@
 @property (nonatomic) UIViewController *viewController;
 @property (nonatomic) UIView *pinchableView;
 @property (nonatomic) CGFloat fixedScale;
+@property (nonatomic) CGPoint translation;
 
 @end
 
@@ -134,7 +135,7 @@
 }
 
 - (void)handlePanClose:(UIPanGestureRecognizer *)gestureRecognizer {
-    CGFloat translationY = [gestureRecognizer translationInView:self.pinchableView].y;
+    CGPoint currentTranlation = [gestureRecognizer translationInView:self.pinchableView];;
     switch (gestureRecognizer.state) {
         case UIGestureRecognizerStateBegan:{
             //TODO: Need to introduce a proper interface to get the scrollView
@@ -144,24 +145,31 @@
                 gestureRecognizer.enabled = YES;
                 return;
             }
+            self.translation = CGPointZero;
             self.isInteractiveTransition = YES;
             [self.viewController dismissViewControllerAnimated:YES
                                                     completion:NULL];
             break;
         }
         case UIGestureRecognizerStateChanged: {
-            CGFloat percent = ((1.0f/200) * translationY);
+            self.translation = CGPointMake(self.translation.x + currentTranlation.x, self.translation.y + currentTranlation.y);
+            CGFloat percent = ((1.0f/200) * self.translation.y);
             percent = (percent > 100) ? 100 : percent;
             percent = (percent < 0) ? 0 : percent;
             [self updateInteractiveTransition:percent];
+            self.pinchableView.transform = CGAffineTransformTranslate(self.pinchableView.transform, currentTranlation.x, currentTranlation.y);
+            [gestureRecognizer setTranslation:CGPointZero inView:self.pinchableView];
             break;
         }
         case UIGestureRecognizerStateEnded: {
-            CGFloat percent = (1.0 - translationY/200);
+            CGFloat percent = ((1.0f/200) * self.translation.y);
+            percent = (percent > 100) ? 100 : percent;
+            percent = (percent < 0) ? 0 : percent;
             BOOL cancelled = ([gestureRecognizer velocityInView:self.pinchableView].y < 5.0 && percent <= 0.3);
             if (cancelled) {
                 [self cancelInteractiveTransition];
             } else {
+                
                 [self finishInteractiveTransition];
             }
             self.isInteractiveTransition = NO;
