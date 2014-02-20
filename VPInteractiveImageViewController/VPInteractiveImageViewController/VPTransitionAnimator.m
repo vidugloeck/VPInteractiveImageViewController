@@ -56,11 +56,6 @@
 
     CGRect endFrame = [transitionContext initialFrameForViewController:fromViewController];
 
-    UIView *view = [[UIView alloc] initWithFrame:endFrame];
-    view.backgroundColor = toViewController.view.backgroundColor;
-    view.alpha = 0;
-    [containerView addSubview:view];
-
     UIColor *backgroundColor = toViewController.view.backgroundColor;
 
     self.originFrame = [containerView convertRect:self.interactiveImageView.frame
@@ -77,7 +72,7 @@
                      animations:^{
                          self.imageView.frame = finalImageViewRect;
                          self.imageView.transform = CGAffineTransformIdentity;
-                         view.alpha = 1;
+                         toViewController.view.layer.backgroundColor = [backgroundColor CGColor];
                      } completion:^(BOOL finished) {
         toViewController.view.backgroundColor = backgroundColor;
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
@@ -95,16 +90,6 @@
 
     [containerView addSubview:toViewController.view];
 
-    UIView *view = [[UIView alloc] initWithFrame:containerView.bounds];
-    view.backgroundColor = fromViewController.view.backgroundColor;
-    [containerView addSubview:view];
-
-    UIColor *backgroundColor = fromViewController.view.backgroundColor;
-
-    fromViewController.view.backgroundColor = [UIColor clearColor];
-    //This is unforutately needed, because the windows backgroundColor
-    //is visible very shortly when the transition is canceled;
-    fromViewController.view.window.backgroundColor = backgroundColor;
     [containerView addSubview:fromViewController.view];
 
     fromViewController.view.frame = endFrame;
@@ -113,12 +98,12 @@
 
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                      animations:^{
-                         fromViewController.view.frame = self.originFrame;
+//                         fromViewController.view.frame = self.originFrame;
                          self.imageView.transform = [self affineTransformForInterfaceOrientation:fromViewController.interfaceOrientation];
                          self.imageView.frame = [fromViewController.view convertRect:self.originFrame fromView:containerView];
-                         view.alpha = 0;
+                         fromViewController.view.layer.backgroundColor = 0;
                      } completion:^(BOOL finished) {
-                         fromViewController.view.backgroundColor = backgroundColor;
+                         fromViewController.view.layer.backgroundColor = [[UIColor clearColor] CGColor];
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
     }];
 }
