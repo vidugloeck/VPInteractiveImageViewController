@@ -19,7 +19,8 @@
 
 - (id)init {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(150.0f, 100.0f);
+    layout.itemSize = CGSizeMake(300.0f, 200.0f);
+    layout.minimumLineSpacing = 10.0f;
     layout.sectionInset = UIEdgeInsetsMake(0.0f, 5.0f, 0.0f, 5.0f);
     self = [super initWithCollectionViewLayout:layout];;
     if (self) {
