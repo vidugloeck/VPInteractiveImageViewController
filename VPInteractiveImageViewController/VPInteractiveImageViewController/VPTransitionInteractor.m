@@ -153,18 +153,15 @@
         }
         case UIGestureRecognizerStateChanged: {
             self.translation = CGPointMake(self.translation.x + currentTranlation.x, self.translation.y + currentTranlation.y);
-            CGFloat percent = ((1.0f/200) * self.translation.y);
-            percent = (percent > 100) ? 100 : percent;
-            percent = (percent < 0) ? 0 : percent;
+            CGFloat percent = [self percent];
             [self updateInteractiveTransition:percent];
             self.pinchableView.transform = CGAffineTransformTranslate(self.pinchableView.transform, currentTranlation.x, currentTranlation.y);
             [gestureRecognizer setTranslation:CGPointZero inView:self.pinchableView];
             break;
         }
         case UIGestureRecognizerStateEnded: {
-            CGFloat percent = ((1.0f/200) * self.translation.y);
-            percent = (percent > 100) ? 100 : percent;
-            percent = (percent < 0) ? 0 : percent;
+            CGFloat percent;
+            percent = [self percent];
             BOOL cancelled = ([gestureRecognizer velocityInView:self.pinchableView].y < 5.0 && percent <= 0.3);
             if (cancelled) {
                 [self cancelInteractiveTransition];
@@ -187,6 +184,15 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
+}
+
+#pragma mark - Helper methods
+
+- (CGFloat)percent {
+    CGFloat percent = ((1.0f/200) * self.translation.y);
+    percent = (percent > 100) ? 100 : percent;
+    percent = (percent < 0) ? 0 : percent;
+    return percent;
 }
 
 @end
