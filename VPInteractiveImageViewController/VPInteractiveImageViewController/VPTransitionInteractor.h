@@ -13,8 +13,7 @@
 
 @property (nonatomic) BOOL isInteractiveTransition;
 @property (nonatomic) BOOL isPresenting;
-
-@property(nonatomic, strong) id delegate;
+@property (nonatomic, weak) id delegate;
 
 - (id)initWithViewController:(UIViewController *)viewController pinchableView:(UIView *)pinchableView;
 @end
