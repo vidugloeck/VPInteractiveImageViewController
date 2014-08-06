@@ -11,8 +11,8 @@
 
 @interface VPTransitionInteractor () <UIGestureRecognizerDelegate>
 
-@property (nonatomic) UIViewController *viewController;
-@property (nonatomic) UIView *pinchableView;
+@property (nonatomic, weak) UIViewController *viewController;
+@property (nonatomic, weak) UIView *pinchableView;
 @property (nonatomic) CGFloat fixedScale;
 @property (nonatomic) CGPoint translation;
 
