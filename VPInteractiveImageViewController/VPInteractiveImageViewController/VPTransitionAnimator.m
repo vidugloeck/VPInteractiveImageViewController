@@ -112,9 +112,6 @@
 - (CGAffineTransform)affineTransformForInterfaceOrientation:(UIInterfaceOrientation)orientation {
     CGFloat angle;
     switch (orientation) {
-        case UIInterfaceOrientationPortrait:
-            angle = 0;
-            break;
         case UIInterfaceOrientationPortraitUpsideDown:
             angle = M_PI;
             break;
@@ -123,6 +120,9 @@
             break;
         case UIInterfaceOrientationLandscapeRight:
             angle = -M_PI_2;
+            break;
+        default:
+            angle = 0;
             break;
     }
     return CGAffineTransformMakeRotation(angle);
