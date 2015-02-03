@@ -12,46 +12,45 @@
 @property (nonatomic) UIImageView *imageView;
 @property (nonatomic) UIScrollView *scrollView;
 @property (nonatomic) UITapGestureRecognizer *tapRecognizer;
+@property (nonatomic) CGFloat maximumZoomScale;
 @end
 
 @implementation VPInteractiveImageViewController
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
-        UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewDoubleTapped:)];
-        doubleTapRecognizer.numberOfTapsRequired = 2;
-        [self.view addGestureRecognizer:doubleTapRecognizer];
-        _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
-        [_tapRecognizer requireGestureRecognizerToFail:doubleTapRecognizer];
-        [self.view addGestureRecognizer:_tapRecognizer];
+        self.maximumZoomScale = 3.0;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    _imageView.frame = self.view.bounds;
+    _imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewDoubleTapped:)];
+    doubleTapRecognizer.numberOfTapsRequired = 2;
+    [self.view addGestureRecognizer:doubleTapRecognizer];
+    _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+    [_tapRecognizer requireGestureRecognizerToFail:doubleTapRecognizer];
+    [self.view addGestureRecognizer:_tapRecognizer];
+    
     [self setupScrollView];
-
     self.view.backgroundColor = [UIColor blackColor];
     [self.scrollView addSubview:self.imageView];
-
 }
 
 - (void)setupScrollView {
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.scrollView.delegate = self;
-    self.scrollView.maximumZoomScale = 2;
-    self.scrollView.autoresizingMask = self.view.autoresizingMask;
+    self.scrollView.maximumZoomScale = self.maximumZoomScale;
     [self.view addSubview:self.scrollView];
-}
-
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-    self.imageView.frame = self.view.bounds;
 }
 
 - (void)viewTapped:(UITapGestureRecognizer *)gestureRecognizer {
@@ -60,10 +59,45 @@
 
 - (void)viewDoubleTapped:(UITapGestureRecognizer *)gestureRecognizer {
     if (self.scrollView.zoomScale < self.scrollView.maximumZoomScale) {
-        [self.scrollView setZoomScale:self.scrollView.maximumZoomScale animated:YES];
+        [self zoomInWithPoint:[gestureRecognizer locationInView:self.imageView]];
     } else {
-        [self.scrollView setZoomScale:self.scrollView.minimumZoomScale animated:YES];
+        [self zoomOut];
     }
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    self.scrollView.minimumZoomScale = [self minimumZoomScale];
+}
+
+- (void)zoomInWithPoint:(CGPoint)point {
+    CGFloat newScale = self.maximumZoomScale;
+    CGRect zoomRect = [self zoomRectForScale:newScale withCenter:point];
+    [self.scrollView zoomToRect:zoomRect animated:YES];
+}
+
+- (void)zoomOut {
+    CGFloat newZoomScale = [self minimumZoomScale];
+    [self.scrollView setZoomScale:newZoomScale animated:YES];
+    self.scrollView.contentSize = self.scrollView.bounds.size;
+    self.imageView.frame = CGRectMake(0, 0, self.scrollView.bounds.size.width,
+                                      self.scrollView.bounds.size.height);
+}
+
+- (CGRect)zoomRectForScale:(CGFloat)scale withCenter:(CGPoint)center {
+    CGRect zoomRect = CGRectZero;
+    zoomRect.size.height = floor(self.view.bounds.size.height / scale);
+    zoomRect.size.width  = floor(self.view.bounds.size.width / scale);
+    zoomRect.origin.x    = center.x - floor(zoomRect.size.width / 2.0);
+    zoomRect.origin.y    = center.y - floor(zoomRect.size.height / 2.0);
+    
+    return zoomRect;
+}
+
+- (CGFloat)minimumZoomScale {
+    CGFloat scale = self.scrollView.bounds.size.width / self.imageView.bounds.size.width;
+    return scale;
 }
 
 #pragma mark - UIScrollViewDelegate
