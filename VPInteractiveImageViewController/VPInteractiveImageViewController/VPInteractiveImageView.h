@@ -11,6 +11,8 @@
 @interface VPInteractiveImageView : UIImageView
 
 @property (nonatomic) UIViewController *presentingViewController;
+@property (nonatomic) BOOL pinchGestureEnabled;
+@property (nonatomic) BOOL panCloseGestureEnabled;
 
 - (void)presentFullscreen;
 @end

@@ -24,9 +24,25 @@
         UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                      action:@selector(imageViewTapped:)];
         [self addGestureRecognizer:recognizer];
+        _pinchGestureEnabled = YES;
+        _panCloseGestureEnabled = YES;
         _transitionDelegate = [[VPTransitionDelegate alloc] initWithInteractiveImageView:self fullScreenImageView:nil];
+        _transitionDelegate.pinchGestureEnabled = _pinchGestureEnabled;
+        _transitionDelegate.panCloseGestureEnabled = _panCloseGestureEnabled;
     }
     return self;
+}
+
+#pragma mark - Getter / Setter
+
+- (void)setPinchGestureEnabled:(BOOL)pinchGestureEnabled {
+    _pinchGestureEnabled = pinchGestureEnabled;
+    self.transitionDelegate.pinchGestureEnabled = pinchGestureEnabled;
+}
+
+- (void)setPanCloseGestureEnabled:(BOOL)panCloseGestureEnabled {
+    _panCloseGestureEnabled = panCloseGestureEnabled;
+    self.transitionDelegate.panCloseGestureEnabled = panCloseGestureEnabled;
 }
 
 - (void)imageViewTapped:(UITapGestureRecognizer *)recognizer {

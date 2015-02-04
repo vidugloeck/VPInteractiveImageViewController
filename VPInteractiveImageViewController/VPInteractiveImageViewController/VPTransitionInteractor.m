@@ -15,6 +15,8 @@
 @property (nonatomic, weak) UIView *pinchableView;
 @property (nonatomic) CGFloat fixedScale;
 @property (nonatomic) CGPoint translation;
+@property (nonatomic) UIPinchGestureRecognizer *pinchGestureRecognizer;
+@property (nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
 
 @end
 
@@ -32,24 +34,36 @@
 }
 
 - (void)setupGestureRecognizer {
-    UIPinchGestureRecognizer *gestureRecognizer;
     if (self.viewController) {
-        gestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self
+        self.pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self
                                                                       action:@selector(handlePinchClose:)];
-        gestureRecognizer.delegate = self;
+        self.pinchGestureRecognizer.delegate = self;
     } else {
-        gestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self
+        self.pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self
                                                                       action:@selector(handlePinchOpen:)];
     }
     self.pinchableView.userInteractionEnabled = YES;
-    [self.pinchableView addGestureRecognizer:gestureRecognizer];
+    [self.pinchableView addGestureRecognizer:self.pinchGestureRecognizer];
 
     if (!self.viewController)
         return;
 
-    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePanClose:)];
-    [self.pinchableView addGestureRecognizer:panGestureRecognizer];
+    self.panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePanClose:)];
+    [self.pinchableView addGestureRecognizer:self.panGestureRecognizer];
 }
+
+#pragma mark - Getter / Setter
+
+- (void)setPinchGestureEnabled:(BOOL)pinchGestureEnabled {
+    _pinchGestureEnabled = pinchGestureEnabled;
+    self.pinchGestureRecognizer.enabled = _pinchGestureEnabled;
+}
+
+- (void)setPanCloseGestureEnabled:(BOOL)panCloseGestureEnabled {
+    _panCloseGestureEnabled = panCloseGestureEnabled;
+    self.panGestureRecognizer.enabled = _panCloseGestureEnabled;
+}
+#pragma mark - Gesture actions
 
 - (void)handlePinchOpen:(UIPinchGestureRecognizer *)pinch {
     CGFloat scale = pinch.scale;

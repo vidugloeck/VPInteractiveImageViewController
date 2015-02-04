@@ -11,5 +11,7 @@
 @class VPInteractiveImageView;
 @interface VPTransitionDelegate : NSObject <UIViewControllerTransitioningDelegate>
 @property (nonatomic, weak) UIImageView *imageView;
+@property (nonatomic) BOOL pinchGestureEnabled;
+@property (nonatomic) BOOL panCloseGestureEnabled;
 - (id)initWithInteractiveImageView:(VPInteractiveImageView *)interactiveImageView fullScreenImageView:(UIImageView *)imageView;
 @end

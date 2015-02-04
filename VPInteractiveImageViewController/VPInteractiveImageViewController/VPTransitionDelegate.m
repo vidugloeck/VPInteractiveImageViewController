@@ -33,6 +33,19 @@
     return self;
 }
 
+#pragma mark - Getter / Setter
+
+- (void)setPinchGestureEnabled:(BOOL)pinchGestureEnabled {
+    _pinchGestureEnabled = pinchGestureEnabled;
+    self.presentingTransitionInteractor.pinchGestureEnabled = _pinchGestureEnabled;
+    self.dismissingTransitionInteractor.pinchGestureEnabled = _pinchGestureEnabled;
+}
+
+- (void)setPanCloseGestureEnabled:(BOOL)panCloseGestureEnabled {
+    _panCloseGestureEnabled = panCloseGestureEnabled;
+    self.dismissingTransitionInteractor.panCloseGestureEnabled = _panCloseGestureEnabled;
+}
+
 #pragma mark - UIViewControllerAnimatedTransitioning
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
@@ -41,6 +54,8 @@
     self.transitionAnimator = nil;
     self.dismissingTransitionInteractor = [[VPTransitionInteractor alloc] initWithViewController:presented
                                                                                    pinchableView:self.imageView];
+    self.dismissingTransitionInteractor.pinchGestureEnabled = self.pinchGestureEnabled;
+    self.dismissingTransitionInteractor.panCloseGestureEnabled = self.panCloseGestureEnabled;
     return self.transitionAnimator;
 }
 

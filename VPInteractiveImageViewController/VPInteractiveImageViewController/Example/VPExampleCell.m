@@ -19,6 +19,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         _imageView = [[VPInteractiveImageView alloc] initWithFrame:CGRectZero];
+        _imageView.pinchGestureEnabled = YES;
+        _imageView.panCloseGestureEnabled = YES;
         [self.contentView addSubview:_imageView];
     }
     return self;
