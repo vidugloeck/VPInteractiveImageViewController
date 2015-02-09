@@ -27,10 +27,13 @@
     return self;
 }
 
+- (void)dealloc {
+    self.scrollView.delegate = nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _imageView.frame = self.view.bounds;
     _imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewDoubleTapped:)];
@@ -43,6 +46,7 @@
     [self setupScrollView];
     self.view.backgroundColor = [UIColor blackColor];
     [self.scrollView addSubview:self.imageView];
+    [self zoomOut];
 }
 
 - (void)setupScrollView {
@@ -69,6 +73,9 @@
     [super viewWillLayoutSubviews];
     
     self.scrollView.minimumZoomScale = [self minimumZoomScale];
+    if (_imageView.frame.size.width <= _scrollView.bounds.size.width) {
+        [self zoomOut]; // reset zoomScale and contentsize to original state
+    }
 }
 
 - (void)zoomInWithPoint:(CGPoint)point {
