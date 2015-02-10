@@ -27,11 +27,12 @@
     return self;
 }
 
+- (void)dealloc {
+    self.scrollView.delegate = nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    _imageView.frame = self.view.bounds;
-    _imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewDoubleTapped:)];
     doubleTapRecognizer.numberOfTapsRequired = 2;
@@ -43,6 +44,9 @@
     [self setupScrollView];
     self.view.backgroundColor = [UIColor blackColor];
     [self.scrollView addSubview:self.imageView];
+    
+    [self adjustImageViewFrame];
+    _imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 }
 
 - (void)setupScrollView {
@@ -65,10 +69,13 @@
     }
 }
 
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
     
     self.scrollView.minimumZoomScale = [self minimumZoomScale];
+    if (self.scrollView.zoomScale <= [self minimumZoomScale]) {
+        [self zoomOut]; // reset zoomScale and contentsize to original state
+    }
 }
 
 - (void)zoomInWithPoint:(CGPoint)point {
@@ -78,10 +85,15 @@
 }
 
 - (void)zoomOut {
-    CGFloat newZoomScale = [self minimumZoomScale];
-    [self.scrollView setZoomScale:newZoomScale animated:YES];
+    self.scrollView.minimumZoomScale = [self minimumZoomScale];
+    [self.scrollView setZoomScale:self.scrollView.minimumZoomScale animated:YES];
     self.scrollView.contentSize = self.scrollView.bounds.size;
-    self.imageView.frame = CGRectMake(0, 0, self.scrollView.bounds.size.width,
+    [self adjustImageViewFrame];
+}
+
+- (void)adjustImageViewFrame {
+    self.imageView.frame = CGRectMake(0, 0,
+                                      self.scrollView.bounds.size.width,
                                       self.scrollView.bounds.size.height);
 }
 
@@ -111,7 +123,7 @@
 }
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
-    if (scale <= self.scrollView.minimumZoomScale) {
+    if (scale <= [self minimumZoomScale]) {
         self.tapRecognizer.enabled = YES;
     }
 }
