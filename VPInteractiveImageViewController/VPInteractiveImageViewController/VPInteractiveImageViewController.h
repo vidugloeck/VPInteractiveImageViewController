@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class VPInteractiveImageView;
+
 @interface VPInteractiveImageViewController : UIViewController
 @property (nonatomic, readonly) UIImageView *imageView;
+
+- (instancetype)initWithInteractiveImageView:(VPInteractiveImageView *)interactiveImageView NS_DESIGNATED_INITIALIZER;
+
 @end
