@@ -11,7 +11,7 @@
 
 #define CellID @"CellID"
 
-@interface VPExampleViewController ()
+@interface VPExampleViewController () <VPInteractiveImageViewDelegate>
 
 @end
 
@@ -46,6 +46,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     VPExampleCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:CellID
                                                                                 forIndexPath:indexPath];
+    cell.imageView.delegate = self;
     NSString *imageName = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
     cell.imageView.image = [UIImage imageNamed:imageName];
     return cell;
@@ -53,6 +54,16 @@
 
 - (NSUInteger)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
+}
+
+#pragma mark - VPInteractiveImageViewDelegate
+
+- (void)interactiveImageViewWillPresent:(VPInteractiveImageView *)imageView {
+    NSLog(@"VPInteractiveImageView will present.");
+}
+
+- (void)interactiveImageViewDidDismiss:(VPInteractiveImageView *)imageView {
+    NSLog(@"VPInteractiveImageView did dismiss.");
 }
 
 @end
