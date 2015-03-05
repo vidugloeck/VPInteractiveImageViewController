@@ -7,8 +7,10 @@
 //
 
 #import "VPInteractiveImageViewController.h"
+#import "VPInteractiveImageView.h"
 
 @interface VPInteractiveImageViewController () <UIScrollViewDelegate>
+@property (nonatomic, weak, readonly) VPInteractiveImageView *interactiveImageView;
 @property (nonatomic) UIImageView *imageView;
 @property (nonatomic) UIScrollView *scrollView;
 @property (nonatomic) UITapGestureRecognizer *tapRecognizer;
@@ -17,12 +19,13 @@
 
 @implementation VPInteractiveImageViewController
 
-- (instancetype)init {
+- (instancetype)initWithInteractiveImageView:(VPInteractiveImageView *)interactiveImageView {
     self = [super init];
     if (self) {
         _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
         self.maximumZoomScale = 3.0;
+        _interactiveImageView = interactiveImageView;
     }
     return self;
 }
@@ -58,6 +61,10 @@
 }
 
 - (void)viewTapped:(UITapGestureRecognizer *)gestureRecognizer {
+    if ([self.interactiveImageView.delegate respondsToSelector:@selector(interactiveImageViewWillDismiss:)]) {
+        [self.interactiveImageView.delegate performSelector:@selector(interactiveImageViewWillDismiss:)
+                                                 withObject:self.interactiveImageView];
+    }
     [self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
