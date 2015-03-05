@@ -22,7 +22,8 @@
 
 @protocol VPInteractiveImageViewDelegate <NSObject>
 
+@optional
 - (void)interactiveImageViewWillPresent:(VPInteractiveImageView *)imageView;
-- (void)interactiveImageViewDidDismiss:(VPInteractiveImageView *)imageView;
+- (void)interactiveImageViewWillDismiss:(VPInteractiveImageView *)imageView;
 
 @end

@@ -10,7 +10,7 @@
 #import "VPInteractiveImageView.h"
 
 @interface VPInteractiveImageViewController () <UIScrollViewDelegate>
-@property (nonatomic, weak) VPInteractiveImageView *interactiveImageView;
+@property (nonatomic, weak, readonly) VPInteractiveImageView *interactiveImageView;
 @property (nonatomic) UIImageView *imageView;
 @property (nonatomic) UIScrollView *scrollView;
 @property (nonatomic) UITapGestureRecognizer *tapRecognizer;
@@ -61,8 +61,8 @@
 }
 
 - (void)viewTapped:(UITapGestureRecognizer *)gestureRecognizer {
-    if ([self.interactiveImageView.delegate respondsToSelector:@selector(interactiveImageViewDidDismiss:)]) {
-        [self.interactiveImageView.delegate performSelector:@selector(interactiveImageViewDidDismiss:)
+    if ([self.interactiveImageView.delegate respondsToSelector:@selector(interactiveImageViewWillDismiss:)]) {
+        [self.interactiveImageView.delegate performSelector:@selector(interactiveImageViewWillDismiss:)
                                                  withObject:self.interactiveImageView];
     }
     [self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];

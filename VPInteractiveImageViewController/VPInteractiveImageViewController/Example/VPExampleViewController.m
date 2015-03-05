@@ -62,7 +62,7 @@
     NSLog(@"VPInteractiveImageView will present.");
 }
 
-- (void)interactiveImageViewDidDismiss:(VPInteractiveImageView *)imageView {
+- (void)interactiveImageViewWillDismiss:(VPInteractiveImageView *)imageView {
     NSLog(@"VPInteractiveImageView did dismiss.");
 }
 
