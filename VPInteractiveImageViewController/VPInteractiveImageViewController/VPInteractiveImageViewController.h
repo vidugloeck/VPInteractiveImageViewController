@@ -14,5 +14,7 @@
 @property (nonatomic, readonly) UIImageView *imageView;
 
 - (instancetype)initWithInteractiveImageView:(VPInteractiveImageView *)interactiveImageView NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
 
 @end
