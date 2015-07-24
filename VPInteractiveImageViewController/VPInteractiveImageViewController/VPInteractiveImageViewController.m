@@ -19,8 +19,10 @@
 
 @implementation VPInteractiveImageViewController
 
+#pragma mark - Initializers
+
 - (instancetype)initWithInteractiveImageView:(VPInteractiveImageView *)interactiveImageView {
-    self = [super init];
+    self = [super initWithNibName:nil bundle:nil];
     if (self) {
         _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -28,6 +30,17 @@
         _interactiveImageView = interactiveImageView;
     }
     return self;
+}
+
+- (instancetype)initWithNibName:(nullable NSString *)nibNameOrNil
+                         bundle:(nullable NSBundle *)nibBundleOrNil {
+    self = [self initWithInteractiveImageView:nil];
+    @throw [NSException exceptionWithName:@"wrong init" reason:nil userInfo:nil];
+}
+
+- (instancetype)initWithCoder:(nonnull NSCoder *)aDecoder {
+    self = [self initWithInteractiveImageView:nil];
+    @throw [NSException exceptionWithName:@"wrong init" reason:nil userInfo:nil];
 }
 
 - (void)dealloc {
