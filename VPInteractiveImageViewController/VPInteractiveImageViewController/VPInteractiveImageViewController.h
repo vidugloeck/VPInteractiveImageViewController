@@ -16,5 +16,6 @@
 - (instancetype)initWithInteractiveImageView:(VPInteractiveImageView *)interactiveImageView NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
