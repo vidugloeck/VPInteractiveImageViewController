@@ -52,15 +52,6 @@
     return cell;
 }
 
-// switch can be removed when we switch to iOS 9 and Xcode 7 fully
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 90000
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-#else
-- (NSUInteger)supportedInterfaceOrientations {
-#endif
-    return UIInterfaceOrientationMaskPortrait;
-}
-
 #pragma mark - VPInteractiveImageViewDelegate
 
 - (void)interactiveImageViewWillPresent:(VPInteractiveImageView *)imageView {
