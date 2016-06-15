@@ -62,7 +62,6 @@
                                          fromView:self.interactiveImageView.superview];
     CGRect finalImageViewRect = self.imageView.frame;
     self.imageView.frame = self.originFrame;
-    self.imageView.transform = [self affineTransformForInterfaceOrientation:toViewController.interfaceOrientation];
     toViewController.view.frame = endFrame;
     toViewController.view.backgroundColor = [UIColor clearColor];
 
@@ -98,8 +97,6 @@
 
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                      animations:^{
-//                         fromViewController.view.frame = self.originFrame;
-                         self.imageView.transform = [self affineTransformForInterfaceOrientation:fromViewController.interfaceOrientation];
                          self.imageView.frame = [fromViewController.view convertRect:self.originFrame fromView:containerView];
                          fromViewController.view.layer.backgroundColor = 0;
                      } completion:^(BOOL finished) {
@@ -108,23 +105,4 @@
     }];
 }
 
-
-- (CGAffineTransform)affineTransformForInterfaceOrientation:(UIInterfaceOrientation)orientation {
-    CGFloat angle;
-    switch (orientation) {
-        case UIInterfaceOrientationPortraitUpsideDown:
-            angle = M_PI;
-            break;
-        case UIInterfaceOrientationLandscapeLeft:
-            angle = M_PI_2;
-            break;
-        case UIInterfaceOrientationLandscapeRight:
-            angle = -M_PI_2;
-            break;
-        default:
-            angle = 0;
-            break;
-    }
-    return CGAffineTransformMakeRotation(angle);
-}
 @end
