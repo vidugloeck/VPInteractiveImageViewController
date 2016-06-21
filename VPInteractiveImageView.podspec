@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name = "VPInteractiveImageView"
-  s.version = "0.3.0"
-  s.platform = :ios, '6.0'
+  s.version = "0.4.0-beta"
+  s.platform = :ios, '8.0'
   s.summary = "VPInteractiveImageView is a gesture based (Fullscreen) image display component as seen in iOS 7 Photos app or Facebook Paper"
   s.homepage = "https://github.com/vimacs/VPInteractiveImageViewController"
   s.license = { :type => 'MIT', :file => 'LICENSE' }
